@@ -1,0 +1,48 @@
+
+name: Test and Deploy Website
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get website files
+        uses: actions/checkout@v4
+
+      - name: Check website files
+        run: |
+          test -s index.html
+          test -s styles.css
+          test -s script.js
+
+      - name: Test JavaScript
+        run: node --check script.js
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get website files
+        uses: actions/checkout@v4
+
+      - name: Connect to AWS
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Upload website to S3
+        run: |
+          aws s3 cp index.html "s3://${{ vars.S3_BUCKET }}/"
+          aws s3 cp styles.css "s3://${{ vars.S3_BUCKET }}/"
+          aws s3 cp script.js "s3://${{ vars.S3_BUCKET }}/"
