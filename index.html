@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Light Directions Application</title>
+    <link rel="stylesheet" href="styles.css" />
+    
+  </head>
+  <body>
+      <h1 class="title">Lights Directions Application</h1>
+      <h2> Keep getting lost? Use our app to find your way to class!</h2>
+      <p id="currentTime"></p>
+      This app was built by students, for students. We understand the suffering of trying
+      to find your class on the first day. Or even sometimes you just forget where to go. 
+      Our app solves that. Try it out for free!
+      <h3 class="reviews">I kept getting lost before this app. Now with this, I don't even have to think about where
+        to go. Thank you! - User1 
+      </h3>
+       <hgroup class="">
+        
+      </hgroup>
+
+      <h2>Find Your Classroom</h2>
+
+<form id="classForm">
+
+    <label>Student Name:</label>
+    <input type="text" id="studentName" required>
+    <br><br>
+
+    <label>Student ID:</label>
+    <input type="text" id="studentID" required>
+    <br><br>
+
+    <label>Building Name:</label>
+    <input type="text" id="building" required>
+    <br><br>
+
+    <label>Class Number:</label>
+    <input type="number" id="classNumber" required>
+    <br><br>
+
+    <label>Class Start Time:</label>
+    <input type="time" id="classTime" required>
+    <br><br>
+
+    <button type="submit">Submit</button>
+
+</form>
+
+<h2>Your Class Information:</h2>
+<p id="results"></p>
+<script src="script.js"></script>
+  </body>
+</html>
