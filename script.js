@@ -21,6 +21,4 @@ document.getElementById("classForm").onsubmit = function(event) {
         " | Building: " + building +
         " | Class Number: " + classNumber +
         " | Class Start Time: " + time;
-
-	const brokenTest =;
 };
